@@ -2,7 +2,16 @@
   "name": "link-opener",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "watch": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "clean": "rm -rf target && rm -rf public/js"
+  },
   "devDependencies": {
     "shadow-cljs": "2.12.5"
+  },
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   }
 }
