@@ -2,7 +2,8 @@
  ["src"]
 
  :dependencies
- [[reagent "1.0.0"]]
+ [[reagent "1.0.0"]
+  [binaryage/devtools "1.0.3"]]
 
  :builds
  {:app {:target :browser

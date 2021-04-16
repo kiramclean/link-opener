@@ -20,4 +20,5 @@
   [:<>
    [link-form]
    [:div {:id "results"}]
-   [debug]])
+   ;; [debug]
+   ])
