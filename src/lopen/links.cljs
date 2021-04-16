@@ -12,7 +12,7 @@
   (let [new-image (.createElement js/document "img")
         app-el (.getElementById js/document "results")]
     (set! (.-src new-image) link)
-    (js/console.log new-image)
+    (set! (.-crossorigin new-image) "anonymous")
     (.appendChild app-el new-image)))
 
 (defn handle-form-submit [event]
