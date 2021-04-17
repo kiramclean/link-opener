@@ -10,8 +10,8 @@
         :output-dir "public/js"
         :asset-path "/js"
 
-        :modules {:main {:entries [lopen.core]}}
+        :modules {:main {:init-fn lopen.core/init}}
 
-        :devtools {:after-load publisher.core/main
+        :devtools {:after-load lopen.core/init
                    :http-root "public"
                    :http-port 3000}}}}

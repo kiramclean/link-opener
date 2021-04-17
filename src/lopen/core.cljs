@@ -7,6 +7,3 @@
   (rdom/render
     [layout/main]
     (.getElementById js/document "app")))
-
-(defn ^:dev/after-load reload []
-  (init))
