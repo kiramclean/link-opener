@@ -1,6 +1,6 @@
 (ns lopen.core
   (:require
-   [lopen.layout :as layout]
+   [lopen.views.layout :as layout]
    [reagent.dom :as rdom]))
 
 (defn ^:export init []

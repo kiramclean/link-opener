@@ -1,20 +1,20 @@
-(ns lopen.layout
+(ns lopen.views.layout
   (:require
-   [lopen.links :as links]
-   [lopen.state :as state]))
+   [lopen.events.user-input :as uie]
+   [lopen.state :as state]
+   [lopen.ui.common :as ui]))
 
 (defn link-form []
   [:form.flex.flex-col
-   [:label.pb-2 {:for "links"} "Paste your links here, each on its own line"]
-   [:textarea.border.border-gray-300.rounded.dark:bg-gray-900.dark:border-gray-900
+   [:label {:for "links"} "Paste your links here, each on its own line"]
+   [ui/textarea
     {:id "links"
      :name "links"
      :rows 10
      :cols 50
-     :on-change links/input-change}]
-   [:div.text-right.mt-3
-    [:button.bg-green-400.rounded.py-2.px-10.font-semibold.dark:text-white.dark:bg-green-600
-     {:type "submit" :on-click links/handle-form-submit} "Go!"]]])
+     :on-change uie/handle-link-input-change}]
+   [:div.text-right
+    [ui/button {:type "submit" :on-click uie/handle-link-form-submit} "Go!"]]])
 
 (defn debug []
   [:div (str @state/db)])

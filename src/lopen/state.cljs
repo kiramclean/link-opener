@@ -2,4 +2,4 @@
   (:require
    [reagent.core :as r]))
 
-(def db (r/atom {}))
+(defonce db (r/atom {}))
