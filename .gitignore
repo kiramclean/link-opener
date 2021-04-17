@@ -1,6 +1,6 @@
 node_modules/
-public/js
-public/css
+public/js/
+public/css/
 
 /target
 /checkouts
@@ -21,3 +21,6 @@ pom.xml.asc
 .hg/
 
 .lsp
+.shadow-cljs
+yarn-error.log
+*.db
