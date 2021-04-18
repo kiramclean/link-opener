@@ -1,8 +1,8 @@
 (ns lopen.views.results
   (:require
    [lopen.events.images :as images]
-   [lopen.state :as state]
-   [lopen.ui.common :as ui]))
+   [lopen.ui.common :as ui]
+   [lopen.state :as state]))
 
 (defn progress-bar [progress errored]
   [:div.relative.pt-1.flex-grow.mx-5
@@ -13,21 +13,19 @@
     [:div.bg-red-400.rounded-r.transition-all
      {:style {:width (str errored "%")}}]]])
 
-(defn progress []
+(defn progress [{:keys [images/loaded images/errored links/parsed]}]
   [:div.flex.w-full.items-baseline
-   (let [loaded-count (count (:images/loaded @state/db))
-         error-count (count (:images/errored @state/db))
-         submitted-links (:links/parsed @state/db)
-         total-count (count submitted-links)]
-     (when (seq submitted-links)
-       [:<>
-        [:p.font-semibold.text-sm.text-gray-600.m-0
-         (str loaded-count " of " total-count " loaded")]
-        [progress-bar (* 100 (/ loaded-count total-count)) (* 100 (/ error-count total-count))]]))])
+   (when @state/show-progress?
+     [:<>
+      [:p.font-semibold.text-sm.text-gray-600.m-0
+       (str loaded " of " parsed " loaded")]
+      [progress-bar
+       (* 100 (/ loaded parsed))
+       (* 100 (/ errored parsed))]])])
 
-(defn images []
+(defn images [links]
   [:<>
-   (for [link (:links/parsed @state/db)]
+   (for [link links]
      ^{:key link}
      [ui/card
       {:class "text-center"}
