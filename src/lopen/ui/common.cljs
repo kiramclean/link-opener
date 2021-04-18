@@ -1,5 +1,13 @@
 (ns lopen.ui.common)
 
+(defn- siblings [children]
+  (vec (cons :<> children)))
+
+(defn- with-react-keys [children]
+  (siblings
+   (for [[i child] (map-indexed vector children)]
+     (with-meta child {:key i}))))
+
 (defn button [opts & children]
   [:button.bg-green-400.rounded.py-2.px-10.font-semibold.text-gray-800.focus:ring-blue-600.focus:ring-2
    opts children])
@@ -10,7 +18,7 @@
 
 (defn card [opts & children]
   [:div.bg-gray-100.dark:bg-gray-800.py-5.px-6.mb-5.shadow-sm
-   opts children])
+   opts (with-react-keys children)])
 
 (def close-icon
   [:svg {:width "24px"

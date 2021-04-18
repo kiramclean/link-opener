@@ -28,16 +28,14 @@
    (for [link links]
      ^{:key link}
      [:<>
-      [:div.flex.justify-end.bg-gray-200.p-2.rounded-t
-       [:button.bg-red-300.rounded-full.w-5.h-5.flex.items-center.justify-center.focus:ring-2.focus:ring-blue-600
+      [:div.flex.justify-end.bg-gray-200.p-2.rounded-t.dark:bg-gray-700
+       [:button.bg-red-300.rounded-full.w-5.h-5.flex.items-center.justify-center.focus:ring-2.focus:ring-blue-600.dark:bg-red-700.outline-none
         {:aria-label "close"
-         :on-click (partial images/remove! link)
-         }
+         :on-click (partial images/remove! link)}
         ui/close-icon]]
       [ui/card
        {:class "text-center rounded-b"}
        ^{:key link}
-
        [:img.mx-auto
         {:src link
          :alt (str "Failed to load image: " link)

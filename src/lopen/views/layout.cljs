@@ -28,8 +28,8 @@
   (pp/pprint @state/db))
 
 (defn main []
-  [:div.dark:bg-gray-900.dark:text-gray-200.h-screen
-   [debug]
+  [:div.dark:bg-gray-900.dark:text-gray-200
+   ;; [debug]
    [:div.container.mx-auto.p-2
     [:h1.text-2xl.font-semibold.pb-4 "Bulk image viewer"]
     [ui/card {:class "rounded"} [link-form]]

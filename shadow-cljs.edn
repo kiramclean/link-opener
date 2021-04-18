@@ -5,7 +5,7 @@
  [[reagent "1.0.0"]
   [binaryage/devtools "1.0.3"]]
 
- :nrepl 3333
+ :nrepl  {:port 3333}
 
  :builds
  {:app {:target :browser
