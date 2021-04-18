@@ -12,3 +12,5 @@
 (def counts (rr/reaction (->> (select-keys @db [:images/loaded :images/errored :links/parsed])
                               (map (fn [[k v]] [k (count v)]))
                               (into {}))))
+
+(def form-error (rr/cursor db [:ui.form/error]))

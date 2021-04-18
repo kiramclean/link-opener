@@ -20,7 +20,9 @@
      :value (:form.input.raw/links @state/db)
      :on-change uie/handle-link-input-change}]
    [:div.flex.items-baseline.justify-between
-    [results/progress @state/counts]
+    (if-let [error @state/form-error]
+      [:p.text-red-500 error]
+      [results/progress @state/counts])
     [ui/button {:type "submit" :on-click uie/handle-link-form-submit} "Go!"]]])
 
 (defn debug []
