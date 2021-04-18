@@ -27,11 +27,19 @@
   [:<>
    (for [link links]
      ^{:key link}
-     [ui/card
-      {:class "text-center"}
-      ^{:key link}
-      [:img.mx-auto
-       {:src link
-        :alt (str "Failed to load image: " link)
-        :on-load (partial images/loaded! link)
-        :on-error (partial images/error! link)}]])])
+     [:<>
+      [:div.flex.justify-end.bg-gray-200.p-2.rounded-t
+       [:button.bg-red-300.rounded-full.w-5.h-5.flex.items-center.justify-center.focus:ring-2.focus:ring-blue-600
+        {:aria-label "close"
+         :on-click (partial images/remove! link)
+         }
+        ui/close-icon]]
+      [ui/card
+       {:class "text-center rounded-b"}
+       ^{:key link}
+
+       [:img.mx-auto
+        {:src link
+         :alt (str "Failed to load image: " link)
+         :on-load (partial images/loaded! link)
+         :on-error (partial images/error! link)}]]])])

@@ -1,6 +1,5 @@
 (ns lopen.views.layout
   (:require
-   [reagent.ratom :as rr]
    [lopen.events.user-input :as uie]
    [clojure.pprint :as pp]
    [lopen.state :as state]
@@ -26,14 +25,12 @@
     [ui/button {:type "submit" :on-click uie/handle-link-form-submit} "Go!"]]])
 
 (defn debug []
-  (pp/pprint @state/db)
-  ;; [:div (str @state/db)]
-  )
+  (pp/pprint @state/db))
 
 (defn main []
   [:div.dark:bg-gray-900.dark:text-gray-200.h-screen
-   ;;[debug]
+   [debug]
    [:div.container.mx-auto.p-2
-    [:h1.text-2xl.font-semibold.pb-4 "Bulk link viewer"]
-    [ui/card [link-form]]
+    [:h1.text-2xl.font-semibold.pb-4 "Bulk image viewer"]
+    [ui/card {:class "rounded"} [link-form]]
     [results/images @state/links]]])
